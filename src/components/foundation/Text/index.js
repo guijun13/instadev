@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 export const textStyleVariantsMap = {
@@ -27,6 +28,12 @@ export default function Text({ tag, variant, children }) {
       {children}
     </TextBase>
   );
+}
+
+Text.propTypes = {
+  tag: PropTypes.string.isRequired,
+  variant: PropTypes.string,
+  children: PropTypes.node.isRequired,
 }
 
 Text.defaultProps = {
