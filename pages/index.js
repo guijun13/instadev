@@ -1,9 +1,10 @@
-import Footer from '../src/components/commons/Footer'
-import Menu from '../src/components/commons/Menu'
-import Text from '../src/components/foundation/Text'
-import { Button } from '../src/components/commons/Button'
-import { Grid } from '../src/components/foundation/layout/Grid'
-import { Box } from '../src/components/foundation/layout/Box'
+import React from 'react';
+import Footer from '../src/components/commons/Footer';
+import Menu from '../src/components/commons/Menu';
+import Text from '../src/components/foundation/Text';
+import Button from '../src/components/commons/Button';
+import Grid from '../src/components/foundation/layout/Grid';
+import Box from '../src/components/foundation/layout/Box';
 
 export default function Home() {
   return (
@@ -17,12 +18,12 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
-      <Menu/>
+      <Menu />
 
       <Grid.Container
         marginTop={{
           xs: '32px',
-          md: '75px'
+          md: '75px',
         }}
       >
         <Grid.Row>
@@ -34,13 +35,13 @@ export default function Home() {
             justifyContent="center"
             flexDirection="column"
           >
-            <Text 
+            <Text
               variant="title"
               tag="h1"
               color="tertiary.main"
               textAlign={{
                 xs: 'center',
-                md: 'left'
+                md: 'left',
               }}
             >
               Compartilhe momentos e conecte-se com amigos
@@ -51,29 +52,30 @@ export default function Home() {
               color="tertiary.light"
               textAlign={{
                 xs: 'center',
-                md: 'left'
+                md: 'left',
               }}
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+              Lorem Ipsum has been the industrys standard dummy text ever since the 1500s
             </Text>
 
             <Button
               margin={{
                 xs: 'auto',
-                md: 'initial'
+                md: 'initial',
               }}
               display="block"
-              variant="primary.main">
+              variant="primary.main"
+            >
               Cadastrar
             </Button>
           </Grid.Col>
           <Grid.Col
             value={{ xs: 12, md: 6 }}
           >
-            <img 
+            <img
               style={{ display: 'block', margin: 'auto' }}
-              src="https://bootcamp-alura-01-git-modulo01.omariosouto.vercel.app/images/phones.png" 
+              src="https://bootcamp-alura-01-git-modulo01.omariosouto.vercel.app/images/phones.png"
               alt="img"
             />
           </Grid.Col>
@@ -81,5 +83,5 @@ export default function Home() {
       </Grid.Container>
       <Footer />
     </Box>
-  )
+  );
 }
