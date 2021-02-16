@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../../../theme/utils/breakpointsMedia';
+import { propToStyle } from '../../../../theme/utils/propToStyle';
 
 export const Grid = {
   Container: styled.div`
@@ -30,13 +31,17 @@ export const Grid = {
         max-width: 1222px;
       `,
     })}
+
+    ${propToStyle('marginTop')}
   `,
+
   Row: styled.div`
     display: flex;
     flex-wrap: wrap;
     margin-right: -16px;
     margin-left: -16px;
   `,
+  
   Col: styled.div`
     padding-right: 16px;
     padding-left: 16px;
@@ -143,5 +148,10 @@ export const Grid = {
       })
 
     }}
+
+    ${propToStyle('display')}
+    ${propToStyle('alignItems')}
+    ${propToStyle('justifyContent')}
+    ${propToStyle('flexDirection')}
   `,
 }
