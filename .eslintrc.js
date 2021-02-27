@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'airbnb',
     'plugin:react/recommended',
+    'plugin:prettier/recommended',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -14,10 +15,10 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-  ],
+  plugins: ['react', 'prettier'],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'prettier/prettier': ['error', { singleQuote: true, semi: true }],
+    'space-before-function-paren': 'off',
   },
 };

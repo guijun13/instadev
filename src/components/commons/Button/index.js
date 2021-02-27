@@ -10,7 +10,8 @@ const ButtonGhost = css`
 `;
 
 const ButtonDefault = css`
-  background-color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
+  background-color: ${(props) =>
+    get(props.theme, `colors.${props.variant}.color`)};
   color: ${(props) => get(props.theme, `colors.${props.variant}.contrastText`)};
 `;
 

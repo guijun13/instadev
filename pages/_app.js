@@ -11,7 +11,10 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>InstaDev</title>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
@@ -23,6 +26,6 @@ export default function App({ Component, pageProps }) {
 }
 
 App.propTypes = {
-  Component: PropTypes.string.isRequired,
-  pageProps: PropTypes.string.isRequired,
+  Component: PropTypes.func.isRequired,
+  pageProps: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
 };

@@ -52,6 +52,6 @@ export default {
     xl: 1200,
   },
   borderRadius: '12px',
-  fontFamily: '\'Rubik\', sans-serif',
+  fontFamily: "'Rubik', sans-serif",
   transition: '200ms ease-in-out',
 };
