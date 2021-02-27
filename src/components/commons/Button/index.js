@@ -41,6 +41,17 @@ const Button = styled.button`
     `,
   })}
 
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  ${({ fullWidth }) =>
+    fullWidth &&
+    css`
+      width: 100%;
+    `};
+
   ${propToStyle('margin')}
   ${propToStyle('display')}
 `;

@@ -6,6 +6,7 @@ import Button from '../src/components/commons/Button';
 import Grid from '../src/components/foundation/layout/Grid';
 import Box from '../src/components/foundation/layout/Box';
 import Modal from '../src/components/commons/Modal';
+import RegisterForm from '../src/components/patterns/RegisterForm';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,13 +28,7 @@ export default function Home() {
           setIsModalOpen(false);
         }}
       >
-        {(modalProps) => (
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          <Box backgroundColor="white" {...modalProps}>
-            {/* data-modal-safe-area="true" da funcao {children()} do componente <Modal /> */}
-            <div>Modal o brabo das galaxias</div>
-          </Box>
-        )}
+        {(modalProps) => <RegisterForm modalProps={modalProps} />}
       </Modal>
       <Menu />
 

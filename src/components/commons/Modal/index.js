@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 import { motion } from 'framer-motion';
 
 const ModalWrapper = styled.div`
@@ -23,13 +23,24 @@ const ModalWrapper = styled.div`
       return css`
         opacity: 1;
         pointer-events: all;
+        overflow: hidden;
+        scrollbar-width: none;
       `;
     }
     return css`
       opacity: 0;
       pointer-events: none;
+      overflow: hidden;
+      scrollbar-width: none;
     `;
   }}
+`;
+
+const LockScroll = createGlobalStyle`
+  body{
+    scrollbar-width: none;
+    overflow: hidden;
+  }
 `;
 
 function Modal({ isOpen, onClose, children }) {
@@ -45,13 +56,14 @@ function Modal({ isOpen, onClose, children }) {
         }
       }}
     >
+      {isOpen && <LockScroll />}
       <motion.div
         variants={{
           open: {
             x: 0,
           },
           closed: {
-            x: '-100%',
+            x: '100%',
           },
         }}
         transition={{ duration: 0.5 }}
