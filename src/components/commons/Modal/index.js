@@ -43,41 +43,70 @@ const LockScroll = createGlobalStyle`
   }
 `;
 
-function Modal({ isOpen, onClose, children }) {
+function CloseIconButton({ onClose }) {
   return (
-    <ModalWrapper
-      isOpen={isOpen}
-      onClick={(event) => {
-        const isSafeArea = event.target.closest(
-          '[data-modal-safe-area="true"]'
-        );
-        if (!isSafeArea) {
-          onClose();
-        }
+    <button
+      type="button"
+      style={{
+        position: 'absolute',
+        top: '30px',
+        right: '30px',
+        border: 'none',
+        background: 'transparent',
+        fontSize: 0,
+        cursor: 'pointer',
       }}
+      onClick={() => onClose()}
     >
-      {isOpen && <LockScroll />}
-      <motion.div
-        variants={{
-          open: {
-            x: 0,
-          },
-          closed: {
-            x: '100%',
-          },
-        }}
-        transition={{ duration: 0.5 }}
-        animate={isOpen ? 'open' : 'closed'}
-        style={{
-          display: 'flex',
-          flex: 1,
-        }}
-      >
-        {children({ 'data-modal-safe-area': true })}
-      </motion.div>
-    </ModalWrapper>
+      <img src="/images/close.svg" alt="close-icon" />
+    </button>
   );
 }
+
+function Modal({ isOpen, onClose, children }) {
+  return (
+    <>
+      <ModalWrapper
+        isOpen={isOpen}
+        onClick={(event) => {
+          const isSafeArea = event.target.closest(
+            '[data-modal-safe-area="true"]'
+          );
+          if (!isSafeArea) {
+            onClose();
+          }
+        }}
+      >
+        {isOpen && <LockScroll />}
+        <motion.div
+          variants={{
+            open: {
+              x: 0,
+            },
+            closed: {
+              x: '100%',
+            },
+          }}
+          transition={{ duration: 0.5 }}
+          animate={isOpen ? 'open' : 'closed'}
+          style={{
+            display: 'flex',
+            flex: 1,
+          }}
+        >
+          <CloseIconButton onClose={onClose} />
+          {children({
+            'data-modal-safe-area': true,
+          })}
+        </motion.div>
+      </ModalWrapper>
+    </>
+  );
+}
+
+CloseIconButton.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
