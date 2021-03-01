@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Player } from '@lottiefiles/react-lottie-player';
+import successAnimation from './animations/success.json';
+import errorAnimation from './animations/error.json';
 import Button from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import Box from '../../foundation/layout/Box';
@@ -108,10 +111,24 @@ function FormContent() {
       </Button>
 
       {isFormSubmitted && submissionStatus === formStates.DONE && (
-        <p>Deu tudo certo :D</p>
+        <>
+          <Player
+            autoplay
+            loop
+            src={successAnimation}
+            style={{ height: '100px', width: '100px' }}
+          />
+        </>
       )}
       {isFormSubmitted && submissionStatus === formStates.ERROR && (
-        <p>Algo deu errado :c</p>
+        <>
+          <Player
+            autoplay
+            loop
+            src={errorAnimation}
+            style={{ height: '100px', width: '100px' }}
+          />
+        </>
       )}
     </form>
   );

@@ -8,6 +8,7 @@
     "lint": "eslint \"**/*.js\" --fix"
   },
   "dependencies": {
+    "@lottiefiles/react-lottie-player": "^3.0.1",
     "framer-motion": "^3.7.0",
     "lodash": "^4.17.20",
     "next": "latest",
