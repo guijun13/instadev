@@ -6,10 +6,20 @@ import Box from '../../foundation/layout/Box';
 import Grid from '../../foundation/layout/Grid';
 import Text from '../../foundation/Text';
 
+const formStates = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  DONE: 'DONE',
+  ERROR: 'ERROR',
+};
+
 function FormContent() {
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
+
   const [userInfo, setUserInfo] = useState({
-    user: '',
-    email: '',
+    username: 'guijun13',
+    name: 'Guilherme Jun',
   });
 
   function handleChange(event) {
@@ -21,12 +31,43 @@ function FormContent() {
   }
 
   const isFormInvalid =
-    userInfo.user.length === 0 || userInfo.email.length === 0;
+    userInfo.username.length === 0 || userInfo.name.length === 0;
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault(); // previne o evento padrao do <form />, que é action="/api/..."
+
+        setIsFormSubmitted(true);
+
+        // Data Transfer Object
+        const userDTO = {
+          username: userInfo.username,
+          name: userInfo.name,
+        };
+
+        fetch('https://instalura-api.vercel.app/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userDTO),
+        })
+          .then((serverResponse) => {
+            if (serverResponse.ok) {
+              return serverResponse.json();
+            }
+
+            throw new Error('Não foi possível cadastrar um novo usuário :c');
+          })
+          .then((serverResponseObject) => {
+            setSubmissionStatus(formStates.DONE);
+            console.log(serverResponseObject);
+          })
+          .catch((error) => {
+            setSubmissionStatus(formStates.ERROR);
+            console.error(error);
+          });
       }}
     >
       <Text variant="title" tag="h1" color="tertiary.main">
@@ -43,17 +84,17 @@ function FormContent() {
       </Text>
       <div>
         <TextField
-          placeholder="Email"
-          name="email"
-          value={userInfo.email}
+          placeholder="Nome"
+          name="name"
+          value={userInfo.name}
           onChange={handleChange}
         />
       </div>
       <div>
         <TextField
           placeholder="Usuário"
-          name="user"
-          value={userInfo.user}
+          name="username"
+          value={userInfo.username}
           onChange={handleChange}
         />
       </div>
@@ -65,6 +106,13 @@ function FormContent() {
       >
         Cadastrar
       </Button>
+
+      {isFormSubmitted && submissionStatus === formStates.DONE && (
+        <p>Deu tudo certo :D</p>
+      )}
+      {isFormSubmitted && submissionStatus === formStates.ERROR && (
+        <p>Algo deu errado :c</p>
+      )}
     </form>
   );
 }
