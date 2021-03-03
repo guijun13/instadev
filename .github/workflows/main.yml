@@ -34,4 +34,3 @@ jobs:
         run: yarn install
       - name: Roda o ESLint
         run: yarn lint
-        
