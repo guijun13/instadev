@@ -30,6 +30,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Versao Node
         run: node -v
+      - name: Install dependecies
+        run: yarn install
       - name: Roda o ESLint
         run: yarn lint
         
