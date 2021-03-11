@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Player } from '@lottiefiles/react-lottie-player';
 import successAnimation from './animations/success.json';
 import errorAnimation from './animations/error.json';
+import loadingAnimation from './animations/loading.json';
 import Button from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import Box from '../../foundation/layout/Box';
@@ -21,8 +22,8 @@ function FormContent() {
   const [submissionStatus, setSubmissionStatus] = useState(formStates.DEFAULT);
 
   const [userInfo, setUserInfo] = useState({
-    username: 'guijun13',
-    name: 'Guilherme Jun',
+    username: '',
+    name: '',
   });
 
   function handleChange(event) {
@@ -40,6 +41,8 @@ function FormContent() {
     <form
       onSubmit={(event) => {
         event.preventDefault(); // previne o evento padrao do <form />, que é action="/api/..."
+
+        setSubmissionStatus(formStates.LOADING);
 
         setIsFormSubmitted(true);
 
@@ -109,7 +112,16 @@ function FormContent() {
       >
         Cadastrar
       </Button>
-
+      {isFormSubmitted && submissionStatus === formStates.LOADING && (
+        <>
+          <Player
+            autoplay
+            loop
+            src={loadingAnimation}
+            style={{ height: '100px', width: '100px' }}
+          />
+        </>
+      )}
       {isFormSubmitted && submissionStatus === formStates.DONE && (
         <>
           <Player
