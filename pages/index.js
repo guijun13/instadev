@@ -30,7 +30,7 @@ export default function Home() {
       >
         {(modalProps) => <RegisterForm modalProps={modalProps} />}
       </Modal>
-      <Menu />
+      <Menu onRegisterClick={() => setIsModalOpen(true)} />
 
       <Grid.Container
         marginTop={{
