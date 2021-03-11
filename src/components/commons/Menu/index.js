@@ -35,7 +35,7 @@ export default function Menu() {
         ))}
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        <Button ghost variant="secondary.main">
+        <Button ghost variant="secondary.main" href="/app/login">
           Entrar
         </Button>
         <Button variant="primary.main">Cadastrar</Button>
