@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MenuWrapper from './styles/MenuWrapper';
 import Logo from '../../../theme/Logo';
 import Button from '../Button';
@@ -19,7 +20,7 @@ const links = [
   },
 ];
 
-export default function Menu() {
+export default function Menu({ onRegisterClick }) {
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
@@ -38,8 +39,14 @@ export default function Menu() {
         <Button ghost variant="secondary.main" href="/app/login">
           Entrar
         </Button>
-        <Button variant="primary.main">Cadastrar</Button>
+        <Button variant="primary.main" onClick={onRegisterClick}>
+          Cadastrar
+        </Button>
       </MenuWrapper.RightSide>
     </MenuWrapper>
   );
 }
+
+Menu.propTypes = {
+  onRegisterClick: PropTypes.func.isRequired,
+};
