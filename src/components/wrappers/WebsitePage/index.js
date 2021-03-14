@@ -5,6 +5,7 @@ import Menu from '../../commons/Menu';
 import Modal from '../../commons/Modal';
 import Box from '../../foundation/layout/Box';
 import RegisterForm from '../../patterns/RegisterForm';
+import SEO from '../../commons/SEO';
 
 export const WebsitePageContext = createContext({
   toggleRegisterModal: () => {},
@@ -12,6 +13,7 @@ export const WebsitePageContext = createContext({
 
 export default function WebsitePageWrapper({
   children,
+  seoProps,
   pageBoxProps,
   menuProps,
 }) {
@@ -25,6 +27,8 @@ export default function WebsitePageWrapper({
         },
       }}
     >
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <SEO {...seoProps} />
       <Box
         flex={1}
         display="flex"
@@ -53,7 +57,7 @@ export default function WebsitePageWrapper({
 }
 
 WebsitePageWrapper.defaultProps = {
-  // seoProps: {},
+  seoProps: {},
   pageBoxProps: {},
   menuProps: {
     display: true,
@@ -61,9 +65,9 @@ WebsitePageWrapper.defaultProps = {
 };
 
 WebsitePageWrapper.propTypes = {
-  // seoProps: PropTypes.shape({
-  //   headTitle: PropTypes.string,
-  // }),
+  seoProps: PropTypes.shape({
+    headTitle: PropTypes.string,
+  }),
   menuProps: PropTypes.shape({
     display: PropTypes.bool,
   }),

@@ -81,6 +81,9 @@ function HomeScreen() {
 export default function Home() {
   return (
     <WebsitePageWrapper
+      seoProps={{
+        headTitle: 'Home',
+      }}
       pageBoxProps={{
         backgroundImage: 'url(/images/bubbles.svg)',
         backgroundRepeat: 'no-repeat',
