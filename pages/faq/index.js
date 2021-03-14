@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FAQScreen from '../../src/components/screens/FAQScreen';
+import websitePageHOC from '../../src/components/wrappers/WebsitePage/hoc';
 
-export default function FAQ({ faqCategories }) {
+function FAQ({ faqCategories }) {
   /* Se fosse feito a request em React puro
   const [faqCategories, setFaqCategories] = useState([]);
 
@@ -18,6 +19,14 @@ export default function FAQ({ faqCategories }) {
 
   return <FAQScreen faqCategories={faqCategories} />;
 }
+
+export default websitePageHOC(FAQ, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'FAQ',
+    },
+  },
+});
 
 // Next.js já faz o pré-request da API ao utilizar o getStaticProps, assim o
 // conteúdo aparece juntamente com o resto da página
