@@ -13,17 +13,6 @@ export default function FAQScreen({ faqCategories }) {
 
   return (
     <Box display="flex" flexDirection="column" flex="1">
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setModalState(false);
-        }}
-      >
-        {(modalProps) => <RegisterForm modalProps={modalProps} />}
-      </Modal>
-
-      <Menu onRegisterClick={() => setModalState(true)} />
-
       <Grid.Container style={{ flex: 1 }}>
         <Grid.Row
           marginTop={{ xs: '32px', md: '100px' }}
@@ -74,8 +63,6 @@ export default function FAQScreen({ faqCategories }) {
             ))}
         </Grid.Row>
       </Grid.Container>
-
-      <Footer />
     </Box>
   );
 }
