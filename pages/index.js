@@ -1,37 +1,16 @@
-import React, { useState } from 'react';
-import Footer from '../src/components/commons/Footer';
-import Menu from '../src/components/commons/Menu';
+import React, { useContext } from 'react';
 import Text from '../src/components/foundation/Text';
 import Button from '../src/components/commons/Button';
 import Grid from '../src/components/foundation/layout/Grid';
+import WebsitePageWrapper, {
+  WebsitePageContext,
+} from '../src/components/wrappers/WebsitePage';
 import Box from '../src/components/foundation/layout/Box';
-import Modal from '../src/components/commons/Modal';
-import RegisterForm from '../src/components/patterns/RegisterForm';
 
-export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+function HomeScreen() {
+  const websitePageContext = useContext(WebsitePageContext);
   return (
-    <Box
-      flex={1}
-      display="flex"
-      flexWrap="wrap"
-      flexDirection="column"
-      justifyContent="space-between"
-      backgroundImage="url(/images/bubbles.svg)"
-      backgroundRepeat="no-repeat"
-      backgroundPosition="bottom right"
-    >
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setIsModalOpen(false);
-        }}
-      >
-        {(modalProps) => <RegisterForm modalProps={modalProps} />}
-      </Modal>
-      <Menu onRegisterClick={() => setIsModalOpen(true)} />
-
+    <Box display="flex" flexDirection="column" flex="1">
       <Grid.Container
         marginTop={{
           xs: '32px',
@@ -80,7 +59,7 @@ export default function Home() {
               display="block"
               variant="primary.main"
               onClick={() => {
-                setIsModalOpen(!isModalOpen);
+                websitePageContext.toggleRegisterModal();
               }}
             >
               Cadastrar
@@ -95,7 +74,23 @@ export default function Home() {
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
-      <Footer />
     </Box>
+  );
+}
+
+export default function Home() {
+  return (
+    <WebsitePageWrapper
+      pageBoxProps={{
+        backgroundImage: 'url(/images/bubbles.svg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'bottom right',
+      }}
+      // menuProps={{
+      //   display: false,
+      // }}
+    >
+      <HomeScreen />
+    </WebsitePageWrapper>
   );
 }
