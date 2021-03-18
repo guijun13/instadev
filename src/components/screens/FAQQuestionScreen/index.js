@@ -35,16 +35,17 @@ export default function FAQQuestionScreen({ category, question }) {
             borderRadiusTheme
           >
             {category.questions.map((currentQuestion) => (
-              <Text
-                key={currentQuestion.slug}
-                as="li"
-                variant="paragraph2"
-                href={`/${currentQuestion.slug}`}
-                color="primary.main"
-                marginBottom="16px"
-              >
-                {currentQuestion.title}
-              </Text>
+              <li key={currentQuestion.slug}>
+                <Text
+                  display="block"
+                  variant="paragraph2"
+                  href={`/faq/${currentQuestion.slug}`}
+                  color="primary.main"
+                  marginBottom="16px"
+                >
+                  {currentQuestion.title}
+                </Text>
+              </li>
             ))}
           </Box>
         </Grid.Col>
