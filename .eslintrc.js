@@ -2,9 +2,11 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    'cypress/globals': true,
   },
   extends: [
     'airbnb',
+    'plugin:cypress/recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
   ],
