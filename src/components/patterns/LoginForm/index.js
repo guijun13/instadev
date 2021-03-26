@@ -1,29 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import Button from '../../commons/Button';
 import TextField from '../../forms/TextField';
-
-function useForm({ initialValues, onSubmit }) {
-  const [values, setValues] = useState(initialValues);
-
-  return {
-    values,
-    // handleSubmit() -> manejar o submit
-    handleSubmit(event) {
-      event.preventDefault();
-      onSubmit(values);
-    },
-    // handleChange() -> mudança do input
-    handleChange(event) {
-      const fieldName = event.target.getAttribute('name');
-      const { value } = event.target;
-      setValues((currentValues) => ({
-        ...currentValues,
-        [fieldName]: value,
-      }));
-    },
-  };
-}
+import useForm from '../../infra/hooks/forms/useForm';
+import { loginService } from '../../services/login/loginService';
 
 export default function LoginForm() {
   const router = useRouter();
@@ -34,31 +14,13 @@ export default function LoginForm() {
   const form = useForm({
     initialValues,
     onSubmit: (values) => {
-      router.push('/app/profile');
-
-      fetch(
-        'https://instalura-api-git-master-omariosouto.vercel.app/api/login',
-        {
-          // mode: 'no-cors',
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: values.user,
-            password: values.password,
-          }),
-        }
-      )
-        .then((serverResponse) => {
-          if (serverResponse.ok) {
-            return serverResponse.json();
-          }
-
-          throw new Error('Falha em pegar dados do servidor :c');
+      loginService
+        .login({
+          username: values.user,
+          password: values.password,
         })
-        .then((convertedResponse) => {
-          console.log(convertedResponse);
+        .then(() => {
+          router.push('/app/profile');
         });
     },
   });
