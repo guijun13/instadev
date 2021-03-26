@@ -34,9 +34,32 @@ export default function LoginForm() {
   const form = useForm({
     initialValues,
     onSubmit: (values) => {
-      // eslint-disable-next-line no-alert
-      alert(JSON.stringify(values, null, 2));
       router.push('/app/profile');
+
+      fetch(
+        'https://instalura-api-git-master-omariosouto.vercel.app/api/login',
+        {
+          // mode: 'no-cors',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: values.user,
+            password: values.password,
+          }),
+        }
+      )
+        .then((serverResponse) => {
+          if (serverResponse.ok) {
+            return serverResponse.json();
+          }
+
+          throw new Error('Falha em pegar dados do servidor :c');
+        })
+        .then((convertedResponse) => {
+          console.log(convertedResponse);
+        });
     },
   });
   return (
