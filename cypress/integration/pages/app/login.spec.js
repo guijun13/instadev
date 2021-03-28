@@ -1,15 +1,24 @@
 /// <reference types="cypress" />
 
+import LoginScreenPageObject from '../../../../src/components/screens/app/LoginScreen/LoginScreen.PageObject';
+
 describe('/pages/app/login', () => {
   // it = teste que estamos fazendo
   it('fill the login fields and go to /app/profile page', () => {
     cy.intercept(
       'https://instalura-api-git-master-omariosouto.vercel.app/api/login'
     ).as('userLogin'); // interceptar a url
-    cy.visit('/app/login/'); // va para a pag /app/login/
-    cy.get('#registerForm input[name="user"]').type('guijun13'); // no elemento input, digite
-    cy.get('#registerForm input[name="password"]').type('senhasegura'); // no elemento input, digite
-    cy.get('#registerForm button[type="submit"]').click(); // no elemento botao, clique
+
+    /* Montagem do cenário de teste */
+    const loginScreen = new LoginScreenPageObject(cy);
+    loginScreen
+      .fillLoginForm({
+        user: 'guijun13',
+        password: 'senhasegura',
+      })
+      .submitLoginForm();
+    /* ---------------------------- */
+
     cy.url().should('include', '/app/profile'); // verificar a url acessada
     // espera a interceptação da url
     cy.wait('@userLogin').then((intercept) => {
