@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint \"**/*.js\" --fix",
-    "test:integration:open": "cypress open"
+    "test:integration:open": "cypress open",
+    "test:integration": "cypress run --headless"
   },
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.0.1",
