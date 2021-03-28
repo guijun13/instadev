@@ -1,5 +1,5 @@
 import { destroyCookie, setCookie } from 'nookies';
-import { isStagingEnv } from '../../infra/env/isStagingEnv';
+import { isStagingEnv } from '../../../infra/env/isStagingEnv';
 
 async function HttpClient(url, { headers, body, ...options }) {
   return fetch(url, {
