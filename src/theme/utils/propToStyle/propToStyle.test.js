@@ -10,7 +10,7 @@ describe('propToStyle()', () => {
 
       expect(styleResult).toEqual({ textAlign: 'center' });
     });
-    test('and it is a string', () => {
+    test('and it is a number', () => {
       const propToStyleResult = propToStyle('flex');
       // <Text flex={1} />
       const componentProps = { flex: 1 }; // number

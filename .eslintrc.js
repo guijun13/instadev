@@ -23,6 +23,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'prettier/prettier': ['error', { singleQuote: true, semi: true }],
     'space-before-function-paren': 'off',
+    'no-console': 'off',
   },
   overrides: [
     {
