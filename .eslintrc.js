@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     'cypress/globals': true,
+    'jest/globals': true,
   },
   extends: [
     'airbnb',
@@ -22,5 +23,17 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'prettier/prettier': ['error', { singleQuote: true, semi: true }],
     'space-before-function-paren': 'off',
+    'no-console': 'off',
   },
+  overrides: [
+    {
+      files: ['**/*.test.js'],
+      plugins: ['jest'],
+      env: {
+        jest: true,
+      },
+      // eslint-disable-next-line global-require, import/no-extraneous-dependencies
+      ...require('eslint-plugin-jest').configs.recommended,
+    },
+  ],
 };
