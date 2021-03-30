@@ -5,6 +5,7 @@ export default function useForm({ initialValues, onSubmit, validateSchema }) {
 
   const [isFormDisabled, setIsFormDisabled] = useState(true);
   const [errors, setErrors] = useState({});
+  const [touchedFields, setTouchedFields] = useState({});
 
   useEffect(() => {
     validateSchema(values)
@@ -50,5 +51,14 @@ export default function useForm({ initialValues, onSubmit, validateSchema }) {
     },
     isFormDisabled,
     errors,
+    touchedFields,
+    handleBlur(event) {
+      const fieldName = event.target.getAttribute('name');
+
+      setTouchedFields({
+        ...touchedFields,
+        [fieldName]: true,
+      });
+    },
   };
 }

@@ -26,10 +26,11 @@ export default function TextField({
   onChange,
   value,
   error,
+  isTouchedField,
   ...props
 }) {
   const hasError = Boolean(error);
-  const isFieldInvalid = hasError;
+  const isFieldInvalid = hasError && isTouchedField;
 
   return (
     <InputWrapper>
@@ -53,12 +54,14 @@ export default function TextField({
 
 TextField.defaultProps = {
   error: '',
+  isTouchedField: false,
 };
 
 TextField.propTypes = {
   placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   error: PropTypes.string,
+  isTouchedField: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
 };

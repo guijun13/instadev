@@ -49,7 +49,9 @@ export default function LoginForm() {
         name="user"
         value={form.values.user}
         error={form.errors.user}
+        isTouchedField={form.touchedFields.user}
         onChange={form.handleChange}
+        onBlur={form.handleBlur}
       />
       <TextField
         placeholder="Senha"
@@ -57,6 +59,8 @@ export default function LoginForm() {
         type="password"
         value={form.values.password}
         error={form.errors.password}
+        isTouchedField={form.touchedFields.password}
+        onBlur={form.handleBlur}
         onChange={form.handleChange}
       />
 
