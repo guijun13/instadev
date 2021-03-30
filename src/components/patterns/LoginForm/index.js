@@ -48,6 +48,7 @@ export default function LoginForm() {
         placeholder="Usuário"
         name="user"
         value={form.values.user}
+        error={form.errors.user}
         onChange={form.handleChange}
       />
       <TextField
@@ -55,6 +56,7 @@ export default function LoginForm() {
         name="password"
         type="password"
         value={form.values.password}
+        error={form.errors.password}
         onChange={form.handleChange}
       />
 
