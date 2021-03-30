@@ -1,9 +1,22 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import * as yup from 'yup';
 import Button from '../../commons/Button';
 import TextField from '../../forms/TextField';
 import useForm from '../../../infra/hooks/forms/useForm';
 import { loginService } from '../../services/login/loginService';
+
+// Definido modelo/schema do formulario
+const loginSchema = yup.object().shape({
+  user: yup
+    .string()
+    .required('"Usuario" eh obrigatorio')
+    .min(3, 'Preencha ao menos 3 caracteres'),
+  password: yup
+    .string()
+    .required('"Senha" eh obrigatorio')
+    .min(8, 'Preencha ao menos 8 caracteres'),
+});
 
 export default function LoginForm() {
   const router = useRouter();
@@ -23,6 +36,11 @@ export default function LoginForm() {
           router.push('/app/profile');
         });
     },
+    async validateSchema(values) {
+      return loginSchema.validate(values, {
+        abortEarly: false,
+      });
+    },
   });
   return (
     <form id="registerForm" onSubmit={form.handleSubmit}>
@@ -30,13 +48,19 @@ export default function LoginForm() {
         placeholder="Usuário"
         name="user"
         value={form.values.user}
+        error={form.errors.user}
+        isTouchedField={form.touchedFields.user}
         onChange={form.handleChange}
+        onBlur={form.handleBlur}
       />
       <TextField
         placeholder="Senha"
         name="password"
         type="password"
         value={form.values.password}
+        error={form.errors.password}
+        isTouchedField={form.touchedFields.password}
+        onBlur={form.handleBlur}
         onChange={form.handleChange}
       />
 
@@ -48,6 +72,7 @@ export default function LoginForm() {
           md: 'initial',
         }}
         fullWidth
+        disabled={form.isFormDisabled}
       >
         Entrar
       </Button>

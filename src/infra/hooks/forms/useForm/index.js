@@ -1,7 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function useForm({ initialValues, onSubmit }) {
+export default function useForm({ initialValues, onSubmit, validateSchema }) {
   const [values, setValues] = useState(initialValues);
+
+  const [isFormDisabled, setIsFormDisabled] = useState(true);
+  const [errors, setErrors] = useState({});
+  const [touchedFields, setTouchedFields] = useState({});
+
+  useEffect(() => {
+    validateSchema(values)
+      .then(() => {
+        setIsFormDisabled(false);
+        setErrors({});
+      })
+      .catch((err) => {
+        // desconstruindo array err.inner para objeto
+        const formatedErrors = err.inner.reduce(
+          (errorObjectAcc, currentError) => {
+            const fieldName = currentError.path;
+            const errorMessage = currentError.message;
+            return {
+              ...errorObjectAcc,
+              [fieldName]: errorMessage,
+            };
+          },
+          {}
+        );
+        console.log(formatedErrors);
+        setErrors(formatedErrors);
+        setIsFormDisabled(true);
+      });
+  }, [values]);
 
   return {
     values,
@@ -19,6 +48,17 @@ export default function useForm({ initialValues, onSubmit }) {
         ...currentValues,
         [fieldName]: value,
       }));
+    },
+    isFormDisabled,
+    errors,
+    touchedFields,
+    handleBlur(event) {
+      const fieldName = event.target.getAttribute('name');
+
+      setTouchedFields({
+        ...touchedFields,
+        [fieldName]: true,
+      });
     },
   };
 }
