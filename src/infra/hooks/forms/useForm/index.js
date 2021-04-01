@@ -1,5 +1,16 @@
 import { useEffect, useState } from 'react';
 
+function formatErrors(yupErrorsinner = []) {
+  return yupErrorsinner.reduce((errorObjectAcc, currentError) => {
+    const fieldName = currentError.path;
+    const errorMessage = currentError.message;
+    return {
+      ...errorObjectAcc,
+      [fieldName]: errorMessage,
+    };
+  }, {});
+}
+
 export default function useForm({ initialValues, onSubmit, validateSchema }) {
   const [values, setValues] = useState(initialValues);
 
@@ -14,18 +25,8 @@ export default function useForm({ initialValues, onSubmit, validateSchema }) {
       setErrors({});
     } catch (err) {
       // desconstruindo array err.inner para objeto
-      const formatedErrors = err.inner.reduce(
-        (errorObjectAcc, currentError) => {
-          const fieldName = currentError.path;
-          const errorMessage = currentError.message;
-          return {
-            ...errorObjectAcc,
-            [fieldName]: errorMessage,
-          };
-        },
-        {}
-      );
-      console.log(formatedErrors);
+      const formatedErrors = formatErrors(err.inner);
+      // console.log(formatedErrors);
       setErrors(formatedErrors);
       setIsFormDisabled(true);
     }
