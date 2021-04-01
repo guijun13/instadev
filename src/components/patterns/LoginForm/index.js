@@ -18,7 +18,8 @@ const loginSchema = yup.object().shape({
     .min(8, 'Preencha ao menos 8 caracteres'),
 });
 
-export default function LoginForm() {
+// eslint-disable-next-line react/prop-types
+export default function LoginForm({ onSubmit }) {
   const router = useRouter();
   const initialValues = {
     user: '',
@@ -50,7 +51,7 @@ export default function LoginForm() {
     },
   });
   return (
-    <form id="registerForm" onSubmit={form.handleSubmit}>
+    <form id="registerForm" onSubmit={onSubmit || form.handleSubmit}>
       <TextField
         placeholder="Usuário"
         name="user"
