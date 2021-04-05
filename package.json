@@ -11,7 +11,8 @@
     "test:integration:open": "cypress open",
     "test:integration": "cypress run --headless",
     "test:integration:build": "start-server-and-test 'yarn build/start' http-get://localhost:3000 'yarn test:integration'",
-    "build/start": "yarn build && yarn start"
+    "build/start": "yarn build && yarn start",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.0.1",
@@ -49,11 +50,11 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "4.3.8",
     "jest-canvas-mock": "^2.3.1",
     "jest-styled-components": "^7.0.3",
     "prettier": "^2.2.1",
-    "start-server-and-test": "^1.12.1"
+    "start-server-and-test": "^1.12.1",
+    "husky": "^6.0.0"
   },
   "license": "MIT",
   "husky": {
