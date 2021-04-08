@@ -8,9 +8,9 @@ Array [
     "source": "/home/",
   },
   Object {
-    "destination": "/sobre",
+    "destination": "/about",
     "permanent": true,
-    "source": "/about/",
+    "source": "/sobre/",
   },
   Object {
     "destination": "/app/login",

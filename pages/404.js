@@ -3,7 +3,7 @@ import { Player } from '@lottiefiles/react-lottie-player';
 import loadingAnimation from '../public/animations/alert.json';
 import Text from '../src/components/foundation/Text';
 
-export default function Sobre() {
+export default function Page404() {
   return (
     <div>
       <Player
