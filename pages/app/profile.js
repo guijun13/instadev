@@ -1,7 +1,8 @@
 import React from 'react';
-import authService from '../../src/components/services/auth/authService';
+import { authService } from '../../src/components/services/auth/authService';
+import { userService } from '../../src/components/services/user/userService';
 
-export default function ProfilePage() {
+export default function ProfilePage(props) {
   return (
     <>
       Página de profile
@@ -9,6 +10,7 @@ export default function ProfilePage() {
         src="https://media.giphy.com/media/bn0zlGb4LOyo8/giphy.gif"
         alt="Nicolas Cage"
       />
+      <pre>{JSON.stringify(props, null, 4)}</pre>
     </>
   );
 }
@@ -20,9 +22,14 @@ export async function getServerSideProps(context) {
 
   if (hasActiveSession) {
     const session = await auth.getSession();
+    const profilePage = await userService.getProfilePage(context);
     return {
       props: {
-        user: session,
+        user: {
+          ...session,
+          ...profilePage.user,
+        },
+        posts: profilePage.posts,
       },
     };
   }
