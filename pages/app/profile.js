@@ -1,4 +1,5 @@
 import React from 'react';
+import authService from '../../src/components/services/auth/authService';
 
 export default function ProfilePage() {
   return (
@@ -10,4 +11,26 @@ export default function ProfilePage() {
       />
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const auth = await authService(context);
+
+  const hasActiveSession = auth.hasActiveSession();
+
+  if (hasActiveSession) {
+    const session = await auth.getSession();
+    return {
+      props: {
+        user: session,
+      },
+    };
+  }
+
+  context.res.writeHead(307, { location: '/login' });
+  context.res.end();
+
+  return {
+    props: {},
+  };
 }
