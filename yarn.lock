@@ -912,10 +912,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@lottiefiles/react-lottie-player@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@lottiefiles/react-lottie-player/-/react-lottie-player-3.0.1.tgz#a94e01c78c83d017ef843c74441aae26cfc984a4"
-  integrity sha512-pTYlun0lwzx5E/0R51XI/wjoUVkudZ0msi2Njeeokejhl70Hi3LvQiShEDGDVl5IbTphGNroGiPRZxFSulwCCA==
+"@lottiefiles/react-lottie-player@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/react-lottie-player/-/react-lottie-player-3.0.7.tgz#2a821d7418afd8325221d8f56fc3468429a564f4"
+  integrity sha512-yWriD1B3E2M35gIKkIl6dZnIft0StOYg+RGBmWDa3makUTf34HRL6NDSwFXZFWO4IuyEIfjsttYy84RCn1fvJg==
   dependencies:
     lottie-web "^5.6.0"
 
