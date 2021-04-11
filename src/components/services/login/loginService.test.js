@@ -34,7 +34,7 @@ describe('loginService', () => {
 
           expect(setCookieModule).toHaveBeenCalledWith(
             null,
-            'APP_TOKEN',
+            'LOGIN_COOKIE_APP_TOKEN',
             token,
             {
               path: '/', // definir que todas as pag terao acesso ao cookie
@@ -66,7 +66,11 @@ describe('loginService', () => {
         const destroyCookie = jest.fn();
         await loginService.logout(null, destroyCookie);
         // esperamos que apague o token
-        expect(destroyCookie).toHaveBeenCalledWith(null, 'APP_TOKEN');
+        expect(destroyCookie).toHaveBeenCalledWith(
+          null,
+          'LOGIN_COOKIE_APP_TOKEN',
+          { path: '/' }
+        );
       });
     });
   });
