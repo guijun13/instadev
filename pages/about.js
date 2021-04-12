@@ -14,7 +14,7 @@ export async function getStaticProps({ preview }) {
 export default websitePageHOC(AboutScreen, {
   pageWrapperProps: {
     seoProps: {
-      headTitle: 'Home',
+      headTitle: 'Sobre',
     },
   },
 });

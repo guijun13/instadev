@@ -3,7 +3,7 @@ import { authService } from '../../src/components/services/auth/authService';
 import { useUserService } from '../../src/components/services/user/hooks';
 import { userService } from '../../src/components/services/user/userService';
 
-export default function ProfilePage() {
+export default function ProfilePage(props) {
   const data = useUserService.getProfilePage();
 
   console.log(data);
@@ -14,7 +14,7 @@ export default function ProfilePage() {
         src="https://media.giphy.com/media/bn0zlGb4LOyo8/giphy.gif"
         alt="Nicolas Cage"
       />
-      {/* <pre>{JSON.stringify(props, null, 4)}</pre> */}
+      <pre>{JSON.stringify(props, null, 4)}</pre>
     </>
   );
 }
