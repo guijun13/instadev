@@ -69,6 +69,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14.15.0'
+      - name: Create .env file
+      uses: SpicyPizza/create-envfile@v1.0
+      with:
+        envkey_DATO_CMS_TOKEN: ${{ secrets.DATO_CMS_TOKEN }}
+
       # - name: Get yarn cache directory path
       #   id: yarn-cache-dir-path
       #   run: echo "::set-output name=dir::$(yarn cache dir)"
