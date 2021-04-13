@@ -24,7 +24,7 @@ describe('/pages/app/login/', () => {
       // espera a interceptação da url
       cy.wait('@userLogin').then((intercept) => {
         const { token } = intercept.response.body.data; // token do servidor
-        cy.getCookie('APP_TOKEN')
+        cy.getCookie('LOGIN_COOKIE_APP_TOKEN')
           .should('exist') // verifica se existe
           .should('have.property', 'value', token); // verifica se o token do cookie é igual ao do server
       });
