@@ -912,12 +912,12 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@lottiefiles/react-lottie-player@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@lottiefiles/react-lottie-player/-/react-lottie-player-3.0.1.tgz#a94e01c78c83d017ef843c74441aae26cfc984a4"
-  integrity sha512-pTYlun0lwzx5E/0R51XI/wjoUVkudZ0msi2Njeeokejhl70Hi3LvQiShEDGDVl5IbTphGNroGiPRZxFSulwCCA==
+"@lottiefiles/react-lottie-player@^3.4.7":
+  version "3.4.7"
+  resolved "https://registry.yarnpkg.com/@lottiefiles/react-lottie-player/-/react-lottie-player-3.4.7.tgz#c8c377e2bc8a636c2bf62ce95dd0e39f720b09c1"
+  integrity sha512-KqkwRiCQPDNzimsXnNSgeJjJlZQ6Fr9JE3OtZdOaGrXovZJ+zDeZNxIwxID8Up0eAdm4zJjudOSc5EJSiGw9RA==
   dependencies:
-    lottie-web "^5.6.0"
+    lottie-web "^5.7.8"
 
 "@next/env@10.0.6":
   version "10.0.6"
@@ -5647,10 +5647,10 @@ loose-envify@^1.1.0, loose-envify@^1.4.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
-lottie-web@^5.6.0:
-  version "5.7.6"
-  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.7.6.tgz#f20e5555ff120dc1e07ba53adb40061e822f3c48"
-  integrity sha512-qn/KYMI4QQvFDhtoxs0RPkn9uZKhDB9keE5BKgbJlSRfNEZpRiDlwBE9ibYz4nPhbyE+NUlt8IRIVR7g5OSX3w==
+lottie-web@^5.7.8:
+  version "5.9.4"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.9.4.tgz#c01478ee5dd47f916cb4bb79040c11d427872d57"
+  integrity sha512-bSs1ZTPifnBVejO1MnQHdfrKfcn02YTCmgOh2wcAEICqRA0V7GzDh8FnwXY6+EzT+i8XOunaIloo/5xC5YNbsA==
 
 lru-cache@6.0.0, lru-cache@^6.0.0:
   version "6.0.0"
