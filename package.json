@@ -15,7 +15,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@lottiefiles/react-lottie-player": "^3.0.1",
+    "@lottiefiles/react-lottie-player": "^3.4.9",
     "@testing-library/user-event": "^13.1.1",
     "@types/jest": "^26.0.22",
     "eslint-plugin-jest": "^24.3.2",
