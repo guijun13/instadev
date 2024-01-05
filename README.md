@@ -2,7 +2,7 @@
 Projeto criado durantes as aulas do Bootcamp Front-end JAMStack da Alura.
 
 ## Status do projeto
-🚧 Em desenvolvimento 🚧
+🚧 Pausado 🚧
 
 ## Tecnologias utilizadas
 As seguintes ferramentas foram usadas na construção do projeto:
